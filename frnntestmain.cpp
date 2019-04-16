@@ -14,25 +14,25 @@ using namespace std;
 
 int main()
 {
-	int kfold = 10;                                      //Í¬ÑùµÄKÖµ£¬Ò»¹²ÖØ¸´ÔËĞĞkfold´Î
-	double accurarytmp = 0;                               //´æ´¢Æ½¾ùÕıÈ·ÂÊ
-	string maxval;                                        //´æ·Å×î´ó¿ÉÄÜµÄlabel
-	int col = 0;											//´æ·ÅÁĞÊı
-	std::vector<string> fileIn;								//´æ·ÅÎÄ¼ş¼ĞÏÂµÄÎÄ¼ş
-	string path = "D:\\pythontest\\data3\\";			//ÎÄ¼ş¼ĞÂ·¾¶
-	filesearch(path, fileIn);								//½«ÎÄ¼şÏÂµÄÎÄ¼şÈ«²¿´æ·ÅÔÚfileInÖĞ
-	string store = "D:\\pythontest\\bbb\\";			//´æ·ÅÊµÑé½á¹û
+	int kfold = 10;                                      //åŒæ ·çš„Kå€¼ï¼Œä¸€å…±é‡å¤è¿è¡Œkfoldæ¬¡
+	double accurarytmp = 0;                               //å­˜å‚¨å¹³å‡æ­£ç¡®ç‡
+	string maxval;                                        //å­˜æ”¾æœ€å¤§å¯èƒ½çš„label
+	int col = 0;											//å­˜æ”¾åˆ—æ•°
+	std::vector<string> fileIn;								//å­˜æ”¾æ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶
+	string path = "D:\\test\\data\\";			//æ–‡ä»¶å¤¹è·¯å¾„
+	filesearch(path, fileIn);								//å°†æ–‡ä»¶ä¸‹çš„æ–‡ä»¶å…¨éƒ¨å­˜æ”¾åœ¨fileInä¸­
+	string store = "D:\\test\\results\\";			//å­˜æ”¾å®éªŒç»“æœ
 
-	//for(int i = 0; i < fileIn.size(); i++)  // Ñ­»·±éÀúÎÄ¼şÏÂµÄÊı¾İ¼¯
+	//for(int i = 0; i < fileIn.size(); i++)  // å¾ªç¯éå†æ–‡ä»¶ä¸‹çš„æ•°æ®é›†
 	//{ 
-		string absolute_path = path + fileIn[0];   //µÚÄ³¸öÊı¾İ¼¯µÄµØÖ·
-		string store_path = store + fileIn[0];   //´æ·ÅµÚÄ³¸öÊı¾İ¼¯µÄµØÖ·
+		string absolute_path = path + fileIn[0];   //ç¬¬æŸä¸ªæ•°æ®é›†çš„åœ°å€
+		string store_path = store + fileIn[0];   //å­˜æ”¾ç¬¬æŸä¸ªæ•°æ®é›†çš„åœ°å€
 		//cout << absolute_path << " "<< store_path << endl;
 		col = getcol(absolute_path.c_str());
 		int fea = col - 1;
 
 		std::vector<Sample> traindata, testdata, alldata;
-		int location = loaddata(traindata, testdata, alldata, absolute_path.c_str(),0);      //×°ÔØÊı¾İ
+		int location = loaddata(traindata, testdata, alldata, absolute_path.c_str(),0);      //è£…è½½æ•°æ®
 		vector<vector <double>> RG(location, vector<double>(location,0));
 
 		clock_t start1, finish1;
@@ -42,10 +42,10 @@ int main()
 		double time1 = (finish1 - start1);
 		ofstream outFile;
 
-		outFile.open(store_path, ios::out | ios::app);					//´ò¿ª´æ´¢Î»ÖÃÎÄ¼ş
-		outFile << "process" << "," << time1 << endl;					//½«kÖµºÍ·ÖÀà³É¹¦µÄ¸ÅÂÊĞ´Èë
+		outFile.open(store_path, ios::out | ios::app);					//æ‰“å¼€å­˜å‚¨ä½ç½®æ–‡ä»¶
+		outFile << "process" << "," << time1 << endl;					//å°†kå€¼å’Œåˆ†ç±»æˆåŠŸçš„æ¦‚ç‡å†™å…¥
 
-		outFile.close();											//¹Ø±ÕÎÄ¼ş
+		outFile.close();											//å…³é—­æ–‡ä»¶
 
 		std::cout << "data process ok!" << endl;
 
@@ -56,47 +56,47 @@ int main()
 			for (int fold = 0; fold < kfold; fold++)
 			{
 				std::vector<Sample> traindata, testdata, alldata;
-				int location = loaddata(traindata, testdata,alldata, absolute_path.c_str(), fold);      //×°ÔØÊı¾İ
+				int location = loaddata(traindata, testdata,alldata, absolute_path.c_str(), fold);      //è£…è½½æ•°æ®
 
-				double matched = 0;                                //±£´æ·ÖÀà³É¹¦µÄÊıÁ¿
-				double accurary = 0;								//±£´æµ¥´Î³É¹¦ÂÊ
+				double matched = 0;                                //ä¿å­˜åˆ†ç±»æˆåŠŸçš„æ•°é‡
+				double accurary = 0;								//ä¿å­˜å•æ¬¡æˆåŠŸç‡
 				int num = testdata.size();
 				for (int i = 0; i < num; i++)
 				{
-					frnn(testdata[i], traindata, maxval, fea, k,RG);			//µÃµ½×î´ó¿ÉÄÜĞÔµÄlabel
+					frnn(testdata[i], traindata, maxval, fea, k,RG);			//å¾—åˆ°æœ€å¤§å¯èƒ½æ€§çš„label
 
-					testdata[i].result = maxval;						//½«×î´ó¿ÉÄÜĞÔµÄlabel¸³Öµ¸øresult
+					testdata[i].result = maxval;						//å°†æœ€å¤§å¯èƒ½æ€§çš„labelèµ‹å€¼ç»™result
 
-					if (testdata[i].label == testdata[i].result)		//Èç¹ûresultºÍ±¾À´µÄlabelÒ»Ñù£¬ÄÇÃ´·ÖÀà³É¹¦
-						matched += 1;									//·ÖÀà³É¹¦ÊıÁ¿ +1
+					if (testdata[i].label == testdata[i].result)		//å¦‚æœresultå’Œæœ¬æ¥çš„labelä¸€æ ·ï¼Œé‚£ä¹ˆåˆ†ç±»æˆåŠŸ
+						matched += 1;									//åˆ†ç±»æˆåŠŸæ•°é‡ +1
 					//std::cout << "the real is  " << testdata[i].label << " " << "the pre is  " << testdata[i].result << endl;
 				}
-				accurary = matched / num;									//³É¹¦ÊıÁ¿/µ±Ç°·ÖÀàÑù±¾µÄ×ÜÊı= ·ÖÀà³É¹¦ÂÊ
+				accurary = matched / num;									//æˆåŠŸæ•°é‡/å½“å‰åˆ†ç±»æ ·æœ¬çš„æ€»æ•°= åˆ†ç±»æˆåŠŸç‡
 				//cout << "--------------------------------------------" << endl
 				//cout << "the accurary is " << accurary << endl;
 			//	Sleep(500);
-				accurarytmp += accurary;									//½«kfold´ÎµÄ³É¹¦ÂÊ¼ÓÆğÀ´
+				accurarytmp += accurary;									//å°†kfoldæ¬¡çš„æˆåŠŸç‡åŠ èµ·æ¥
 				
 		}
-			accurarytmp = accurarytmp / kfold;								//×îºóÔÙ³ıÒÔfold£¬  ¾ÍÊÇÆ½¾ù³É¹¦ÂÊ
-			//std::cout <<"k is "<<k<< " the totalaccurary is " << accurarytmp << endl;	//´òÓ¡³öÀ´
+			accurarytmp = accurarytmp / kfold;								//æœ€åå†é™¤ä»¥foldï¼Œ  å°±æ˜¯å¹³å‡æˆåŠŸç‡
+			//std::cout <<"k is "<<k<< " the totalaccurary is " << accurarytmp << endl;	//æ‰“å°å‡ºæ¥
 			finish = clock();
 			double time = (finish - start);
 			ofstream outFile;
 
-			outFile.open(store_path, ios::out | ios::app);					//´ò¿ª´æ´¢Î»ÖÃÎÄ¼ş
-			outFile << k << "," << accurarytmp << "," << "time" << "," << time << endl;					//½«kÖµºÍ·ÖÀà³É¹¦µÄ¸ÅÂÊĞ´Èë
+			outFile.open(store_path, ios::out | ios::app);					//æ‰“å¼€å­˜å‚¨ä½ç½®æ–‡ä»¶
+			outFile << k << "," << accurarytmp << "," << "time" << "," << time << endl;					//å°†kå€¼å’Œåˆ†ç±»æˆåŠŸçš„æ¦‚ç‡å†™å…¥
 
-			outFile.close();											//¹Ø±ÕÎÄ¼ş
+			outFile.close();											//å…³é—­æ–‡ä»¶
 
-			accurarytmp = 0;												//ÖØĞÂ³õÊ¼»¯Îª0
+			accurarytmp = 0;												//é‡æ–°åˆå§‹åŒ–ä¸º0
 		}
 	
 		//	cout << finish - start << "/" << CLOCKS_PER_SEC << " (s) " << endl;
 		//ofstream outFile;
 
-		//outFile.open(store_path, ios::out | ios::app);					//´ò¿ª´æ´¢Î»ÖÃÎÄ¼ş
-		//outFile << "time" << "," << time << endl;						//½«kÖµºÍ·ÖÀà³É¹¦µÄ¸ÅÂÊĞ´Èë
+		//outFile.open(store_path, ios::out | ios::app);					//æ‰“å¼€å­˜å‚¨ä½ç½®æ–‡ä»¶
+		//outFile << "time" << "," << time << endl;						//å°†kå€¼å’Œåˆ†ç±»æˆåŠŸçš„æ¦‚ç‡å†™å…¥
 
 		//outFile.close();
 	//}
