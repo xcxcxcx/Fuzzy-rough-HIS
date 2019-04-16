@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="frnntestmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="loaddata.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="split.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="getcol.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cmp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="similarity.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lower_approximations.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="upper_approximations.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="calmembership.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="frnn.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="filesearch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="label_.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dataprocess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="get_label_index.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="get_vd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="get_standard_deviation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="loaddata.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="split.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="getcol.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cmp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="similarity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="calmembership.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lower_approximations.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="upper_approximations.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="frnn.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="filesearch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="label_.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dataprocess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="get_label_index.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="get_vd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="get_standard_deviation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
